@@ -6,16 +6,22 @@ import (
 )
 
 func main() {
-	str := "Ansar is the best man"
+	str := "Ansar is the best"
 	result := ReverseWords(str)
 	fmt.Println(result)
 }
+
 func ReverseWords(str string) string {
-	words := strings.Split(str, " ")
+	str = strings.TrimSpace(str)
 
-	for i, j := 0, len(words)-1; i < j; i, j = i+1, j-1 {
+	words := strings.Fields(str)
+	i := 0
+	j := len(words) - 1
+	for i < j {
 		words[i], words[j] = words[j], words[i]
+		i++
+		j--
 	}
-
-	return strings.Join(words, " ")
+	out := strings.Join(words, " ")
+	return out
 }
